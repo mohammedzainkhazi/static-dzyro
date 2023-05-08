@@ -1,0 +1,38 @@
+{
+  "name": "static-dzyro",
+  "version": "1.0.0",
+  "description": "This is a Business Website called Dzyro.",
+  "main": "index.html",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohammedzainkhazi/static-dzyro.git"
+  },
+  "keywords": [
+    "Dzyro",
+    "Dzyro",
+    "Business",
+    "rootzain",
+    "Business",
+    "Dzyro",
+    "Dzyro",
+    "Solutions"
+  ],
+  "author": "Mohammed Zain Khazi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mohammedzainkhazi/static-dzyro/issues"
+  },
+  "homepage": "https://github.com/mohammedzainkhazi/static-dzyro#readme",
+  "dependencies": {
+    "nodemailer": "^6.9.1"
+  },
+  "devDependencies": {
+    "@types/nodemailer": "^6.4.7"
+  }
+}
