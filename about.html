@@ -30,6 +30,58 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-analytics.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyBISP3Mv3aCSgbB7rqSHm8Ph-68SuZYPEk",
+            authDomain: "thedzyro.firebaseapp.com",
+            projectId: "thedzyro",
+            storageBucket: "thedzyro.appspot.com",
+            messagingSenderId: "697066209883",
+            appId: "1:697066209883:web:a5424846fb2ed00efdb57e",
+            measurementId: "G-Q6T5H7KX7R"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+
+        document.getElementById('submit').addEventListener('click', function () {
+            let email = document.getElementById('emailId').value;
+            console.log(email)
+            if (email === '') {
+                alert('Please fill Email Input ! ');
+                return;
+            }
+            else {
+                const db = getDatabase();
+                set(ref(db, '/contactEmails/' + email.split('@')[0]), {
+                    email: email,
+                });
+            }
+        })
+
+        document.getElementById('submit2').addEventListener('click', function () {
+            let email = document.getElementById('emailId2').value;
+            console.log(email)
+            if (email === '') {
+                alert('Please fill Email Input ! ');
+                return;
+            }
+            else {
+                const db = getDatabase();
+                set(ref(db, '/contactEmails/' + email.split('@')[0]), {
+                    email: email,
+                });
+            }
+        })
+
+
+    </script>
 </head>
 
 <body>
@@ -47,8 +99,7 @@
         <div class="container-xxl position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
                 <a href="" class="navbar-brand p-0">
-                    <h1 class="m-0">Dzyro</h1>
-                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                    <h1 class="m-0"><img src="img/logo.jpeg" class="rounded"/><span style="margin-left: 10px;">Dzyro</span></h1>   
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars"></span>
@@ -59,23 +110,35 @@
                         <a href="about.html" class="nav-item nav-link active">About Us</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Our Services</a>
-                            <div class="dropdown-menu m-0">
-                                <a href="team.html" class="dropdown-item">Our Team</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                
+                            <div class="dropdown-menu m-0" style="font-size: 13px;">
+                                <a href="service.html" class="dropdown-item"> Business to Business Email Services</a>
+                                <a href="service.html" class="dropdown-item"> Custom Built List Services</a>
+                                <a href="service.html" class="dropdown-item"> Data Appending Services</a>
+                                <a href="service.html" class="dropdown-item"> Data Cleansing Services</a>
+                                <a href="service.html" class="dropdown-item"> Industry Database Services</a>
+                                <a href="service.html" class="dropdown-item">Technology Users Database Services</a>
                             </div>
                         </div>
                         <a href="project.html" class="nav-item nav-link">Project</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Business to Business Databases</a>
-                            <div class="dropdown-menu m-0">
-                                <a href="team.html" class="dropdown-item">Our Team</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                
-                            </div>
+                         <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Business to Business
+                                Databases</a>
+                                <div class="dropdown-menu m-0" style="font-size: 14px;">
+                                    <a href="team.html" class="dropdown-item"> 🇸🇬 Singapore Business Email List</a>
+                                    <a href="team.html" class="dropdown-item"> 🇦🇺 Australia Business Email List</a>
+                                    <a href="team.html" class="dropdown-item"> 🇦🇪 Middle East Email List</a>
+                                    <a href="team.html" class="dropdown-item"> 🇹🇼 Taiwan Email List</a>
+                                    <a href="team.html" class="dropdown-item"> 🇰🇷 South Korea Email List</a>
+                                    <a href="team.html" class="dropdown-item"> 🇮🇩 Indeonesia Business Email List</a>
+                                    <a href="team.html" class="dropdown-item"> 🇦🇪 UAE Business Email List</a>   
+                                    <a href="team.html" class="dropdown-item"> 🇲🇾 Malaysia Business Email List</a>
+                                    <a href="team.html" class="dropdown-item"> 🇭🇰 Hong Kong Business Email List</a>
+                                    <a href="team.html" class="dropdown-item"> 🇸🇦 Saudi Arabia Business Email List</a>
+                                </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">Blog</a>
-                        <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                        </div>
+                        
+                        <a href="contact.html" class="nav-item nav-link text-light">Contact Us</a>
                     </div>
                     <a href="https://dzyro.com" class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3">Get a Quote</a>
                 </div>
@@ -188,8 +251,8 @@
                         <h3 class="text-white">Ready to get started</h3>
                         <small class="text-white">Diam elitr est dolore at sanctus nonumy.</small>
                         <div class="position-relative w-100 mt-3">
-                            <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="Enter Your Email" style="height: 48px;">
-                            <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane text-primary fs-4"></i></button>
+                            <input id="emailId2" class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="Enter Your Email" style="height: 48px;">
+                            <button id="submit2" type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane text-primary fs-4"></i></button>
                         </div>
                     </div>
                     <div class="col-md-6 text-center mb-n5 d-none d-md-block">
@@ -318,8 +381,11 @@
                         <h5 class="text-white mb-4">Newsletter</h5>
                         <p>Submit your Email here, our team will contact you shortly. </p>
                         <div class="position-relative w-100 mt-3">
-                            <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="Your Email" style="height: 48px;">
-                            <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane text-primary fs-4"></i></button>
+                            <input id=" " class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text"
+                                placeholder="Your Email" style="height: 48px;">
+                            <button id="submit" type="button"
+                                class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i
+                                    class="fa fa-paper-plane text-primary fs-4"></i></button>
                         </div>
                     </div>
                 </div>
@@ -328,11 +394,11 @@
                 <div class="copyright">
                     <div class="row">
                         <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                            &copy; <a class="border-bottom" href="#">Dzyro</a>, All Rights Reserved. 
-                            <br/> Since 2001
-							
-							<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-							 
+                            &copy; <a class="border-bottom" href="#">Dzyro</a>, All Rights Reserved.
+                            <br /> Since 2020
+
+                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+
                         </div>
                         <div class="col-md-6 text-center text-md-end">
                             <div class="footer-menu">

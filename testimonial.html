@@ -30,6 +30,43 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-analytics.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyBISP3Mv3aCSgbB7rqSHm8Ph-68SuZYPEk",
+            authDomain: "thedzyro.firebaseapp.com",
+            projectId: "thedzyro",
+            storageBucket: "thedzyro.appspot.com",
+            messagingSenderId: "697066209883",
+            appId: "1:697066209883:web:a5424846fb2ed00efdb57e",
+            measurementId: "G-Q6T5H7KX7R"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+
+        document.getElementById('submit').addEventListener('click', function () {
+            let email = document.getElementById('emailId').value;
+            console.log(email)
+            if (email === '') {
+                alert('Please fill Email Input ! ');
+                return;
+            }
+            else {
+                const db = getDatabase();
+                set(ref(db, '/contactEmails/' + email.split('@')[0]), {
+                    email: email,
+                });
+            }
+        })
+
+
+    </script>
 </head>
 
 <body>
@@ -230,7 +267,7 @@
                     <div class="row">
                         <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
                             &copy; <a class="border-bottom" href="#">Dzyro</a>, All Rights Reserved. 
-                            <br/> Since 2001
+                            <br/> Since 2020
 							
 							<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
 							 

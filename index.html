@@ -31,6 +31,43 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-analytics.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyBISP3Mv3aCSgbB7rqSHm8Ph-68SuZYPEk",
+            authDomain: "thedzyro.firebaseapp.com",
+            projectId: "thedzyro",
+            storageBucket: "thedzyro.appspot.com",
+            messagingSenderId: "697066209883",
+            appId: "1:697066209883:web:a5424846fb2ed00efdb57e",
+            measurementId: "G-Q6T5H7KX7R"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+
+        document.getElementById('submit').addEventListener('click', function () {
+            let email = document.getElementById('emailId').value;
+            console.log(email)
+            if (email === '') {
+                alert('Please fill Email Input ! ');
+                return;
+            }
+            else {
+                const db = getDatabase();
+                set(ref(db, '/contactEmails/' + email.split('@')[0]), {
+                    email: email,
+                });
+            }
+        })
+
+
+    </script>
 
 </head>
 
@@ -56,8 +93,7 @@
         <div class="container-xxl position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-2">
                 <a href="" class="navbar-brand p-0">
-                    <h1 class="m-0">Dzyro</h1>
-                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                    <h1 class="m-0"><img src="img/logo.jpeg" class="rounded"/><span style="margin-left: 10px;">Dzyro</span></h1>   
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars"></span>
@@ -68,37 +104,38 @@
                         <a href="about.html" class="nav-item nav-link">About Us</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Our Services</a>
-                            <div class="dropdown-menu m-0" style="font-size: 14px;">
-                                <a href="#" class="dropdown-item"> Business to Business EMAIL APPENDING SERVICES</a>
-                                <a href="#" class="dropdown-item"> CUSTOM BUILT LIST SERVICES</a>
-                                <a href="#" class="dropdown-item"> DATA APPENDING SERVICES</a>
-                                <a href="#" class="dropdown-item"> DATA CLEANSING SERVICES</a>
-                                <a href="#" class="dropdown-item"> INDUSTRY DATABASE SERVICES</a>
-                                <a href="#" class="dropdown-item">TECHNOLOGY USERS DATABASE SERVICES</a>
+                            <div class="dropdown-menu m-0" style="font-size: 13px;">
+                                <a href="#" class="dropdown-item"> Business to Business Email Services</a>
+                                <a href="#" class="dropdown-item"> Custom Built List Services</a>
+                                <a href="#" class="dropdown-item"> Data Appending Services</a>
+                                <a href="#" class="dropdown-item"> Data Cleansing Services</a>
+                                <a href="#" class="dropdown-item"> Industry Database Services</a>
+                                <a href="#" class="dropdown-item">Technology Users Database Services</a>
                             </div>
                         </div>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Business to Business
                                 Databases</a>
                             <div class="dropdown-menu m-0" style="font-size: 14px;">
-                                <a href="team.html" class="dropdown-item">SINGAPORE BUSINESS EMAIL LIST</a>
-                                <a href="team.html" class="dropdown-item"> AUSTRALIA BUSINESS EMAIL LIST</a>
-                                <a href="team.html" class="dropdown-item"> MIDDLE EAST EMAIL LIST</a>
-                                <a href="team.html" class="dropdown-item"> TAIWAN EMAIL LIST</a>
-                                <a href="team.html" class="dropdown-item"> SOUTH KOREA EMAIL LIST</a>
-                                <a href="team.html" class="dropdown-item"> INDONESIA BUSINESS EMAIL LIST</a>
-                                <a href="team.html" class="dropdown-item"> UAE BUSINESS EMAIL LIST.</a>
-                                <a href="team.html" class="dropdown-item"> MALAYSIA BUSINESS EMAIL LIST</a>
-                                <a href="team.html" class="dropdown-item"> HONG KONG BUSINESS EMAIL LIST</a>
-                                <a href="team.html" class="dropdown-item"> SAUDI ARABIA BUSINESS EMAIL LIST</a>
+                                <a href="team.html" class="dropdown-item"> 🇸🇬 Singapore Business Email List</a>
+                                <a href="team.html" class="dropdown-item"> 🇦🇺 Australia Business Email List</a>
+                                <a href="team.html" class="dropdown-item"> 🇦🇪 Middle East Email List</a>
+                                <a href="team.html" class="dropdown-item"> 🇹🇼 Taiwan Email List</a>
+                                <a href="team.html" class="dropdown-item"> 🇰🇷 South Korea Email List</a>
+                                <a href="team.html" class="dropdown-item"> 🇮🇩 Indeonesia Business Email List</a>
+                                <a href="team.html" class="dropdown-item"> 🇦🇪 UAE Business Email List</a>   
+                                <a href="team.html" class="dropdown-item"> 🇲🇾 Malaysia Business Email List</a>
+                                <a href="team.html" class="dropdown-item"> 🇭🇰 Hong Kong Business Email List</a>
+                                <a href="team.html" class="dropdown-item"> 🇸🇦 Saudi Arabia Business Email List</a>
 
                             </div>
                         </div>
-                        <a href="project.html" class="nav-item nav-link">Blog</a>
+                        
                         <a href="contact.html" class="nav-item nav-link">Contact Us</a>
                     </div>
                     <a
-                        class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-md-3 border-2 outline-2 outline-blue-400 border-white">Get a Quote </a>
+                        class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-md-3 border-2 outline-2 outline-blue-400 border-white">Get
+                        a Quote </a>
             </nav>
 
             <div class="container-xxl py-5 bg-primary hero-header mb-5">
@@ -171,7 +208,7 @@
                     <h6 class="position-relative d-inline text-primary ps-4">Our Services</h6>
                     <h2 class="mt-2">Why Select Us</h2>
                 </div>
-                <div class="row g-4">
+                <div class="row g-4 flex justify-content-center">
                     <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s">
                         <div class="service-item d-flex flex-column justify-content-center text-center rounded">
                             <div class="service-icon flex-shrink-0">
@@ -202,28 +239,6 @@
                             <h5 class="mb-3">Precise Data</h5>
                             <p> Our verified and updated email and mobile number list possess the accurate information
                                 you require for creating a dependable business database..</p>
-
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s">
-                        <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                            <div class="service-icon flex-shrink-0">
-                                <i class="fa fa-money-bill fa-2x"></i>
-                            </div>
-                            <h5 class="mb-3">Best Price</h5>
-                            <p>We can surely beat competitors’ offers and prices by a good percentage. You can let us
-                                know who is providing the same product range at a low cost..</p>
-
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
-                        <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                            <div class="service-icon flex-shrink-0">
-                                <i class="fa fa-phone-volume fa-duotune fa-2x"></i>
-                            </div>
-                            <h5 class="mb-3">You will Own the list</h5>
-                            <p>You will have full access to its usage when you get the list, mainly for telemarketing,
-                                sales calls, etc.</p>
 
                         </div>
                     </div>
@@ -603,7 +618,9 @@
                                     <a class="btn btn-square text-primary bg-white my-1" href=""><i
                                             class="fab fa-linkedin-in"></i></a>
                                 </div>
-                                <img class="img-fluid rounded w-100" src="img/team-3.jpg" alt="">
+                                <img class="img-fluid rounded w-100"
+                                    src="https://media.licdn.com/dms/image/C5603AQFzfrZInotRAA/profile-displayphoto-shrink_800_800/0/1617792277197?e=1689206400&v=beta&t=xNWXIS2mGu7xUJ3XUO--dmnE66DUXApCsKsqO0oaCTU"
+                                    alt="">
                             </div>
                             <div class="px-4 py-3">
                                 <h5 class="fw-bold m-0">Ameen Hasan</h5>
@@ -642,36 +659,37 @@
                         <a class="btn btn-link" href="">Terms & Condition</a>
                         <a class="btn btn-link" href="">Career</a>
                     </div>
-                    <div class="col-md-6 col-lg-3">
-                        <h5 class="text-white mb-4">Project Gallery</h5>
-                        <div class="row g-2">
-                            <div class="col-4">
-                                <img class="img-fluid" src="img/portfolio-1.jpg" alt="Image">
-                            </div>
-                            <div class="col-4">
-                                <img class="img-fluid" src="img/portfolio-2.jpg" alt="Image">
-                            </div>
-                            <div class="col-4">
-                                <img class="img-fluid" src="img/portfolio-3.jpg" alt="Image">
-                            </div>
-                            <div class="col-4">
-                                <img class="img-fluid" src="img/portfolio-4.jpg" alt="Image">
-                            </div>
-                            <div class="col-4">
-                                <img class="img-fluid" src="img/portfolio-5.jpg" alt="Image">
-                            </div>
-                            <div class="col-4">
-                                <img class="img-fluid" src="img/portfolio-6.jpg" alt="Image">
+                        <div class="col-md-6 col-lg-3">
+                            <h5 class="text-white mb-4">Project Gallery</h5>
+                            <div class="row g-2">
+                                <div class="col-4">
+                                    <img class="img-fluid" src="img/portfolio-1.jpg" alt="Image">
+                                </div>
+                                <div class="col-4">
+                                    <img class="img-fluid" src="img/portfolio-2.jpg" alt="Image">
+                                </div>
+                                <div class="col-4">
+                                    <img class="img-fluid" src="img/portfolio-3.jpg" alt="Image">
+                                </div>
+                                <div class="col-4">
+                                    <img class="img-fluid" src="img/portfolio-4.jpg" alt="Image">
+                                </div>
+                                <div class="col-4">
+                                    <img class="img-fluid" src="img/portfolio-5.jpg" alt="Image">
+                                </div>
+                                <div class="col-4">
+                                    <img class="img-fluid" src="img/portfolio-6.jpg" alt="Image">
+                                </div>
                             </div>
                         </div>
-                    </div>
                     <div class="col-md-6 col-lg-3">
                         <h5 class="text-white mb-4">Newsletter</h5>
                         <p>Submit your Email here, our team will contact you shortly. </p>
                         <div class="position-relative w-100 mt-3">
-                            <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text"
+                            <input id="emailId" class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text"
                                 placeholder="Your Email" style="height: 48px;">
-                            <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i
+                            <button id="submit" type="button"
+                                class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i
                                     class="fa fa-paper-plane text-primary fs-4"></i></button>
                         </div>
                     </div>
@@ -681,11 +699,11 @@
                 <div class="copyright">
                     <div class="row">
                         <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                            &copy; <a class="border-bottom" href="#">Dzyro</a>, All Rights Reserved. 
-                            <br/> Since 2001
-							
-							<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-							 
+                            &copy; <a class="border-bottom" href="#">Dzyro</a>, All Rights Reserved.
+                            <br /> Since 2020
+
+                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+
                         </div>
                         <div class="col-md-6 text-center text-md-end">
                             <div class="footer-menu">
